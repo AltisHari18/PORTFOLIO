@@ -2,7 +2,7 @@
 
 > A cinematic, fully responsive personal portfolio built with pure HTML, CSS & JavaScript — featuring animated backgrounds, flip card profile, typewriter effects, skill bars, and a dynamic project showcase.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blueviolet?style=for-the-badge&logo=googlechrome&logoColor=white)](https://altishari18.github.io)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blueviolet?style=for-the-badge&logo=googlechrome&logoColor=white)](https://altishari18.github.io/PORTFOLIO/)
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)]()
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]()
