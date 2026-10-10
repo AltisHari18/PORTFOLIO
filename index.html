@@ -1,540 +1,660 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="claude2.css">
-</head>
+    <link rel="stylesheet" href="CSS.css" />
+  </head>
 
-<script>
+  <script>
     function showSection(sectionId) {
+      let sections = document.querySelectorAll("section");
 
-        let sections = document.querySelectorAll("section");
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
 
-        sections.forEach(section => {
-            section.style.display = "none";
-        });
-
-        document.getElementById(sectionId).style.display = "block";
+      document.getElementById(sectionId).style.display = "block";
     }
-</script>
-<script>
-    const roles = ["CSE Student", "Python Developer", "AI Enthusiast", "Web Developer"];
-    let ri = 0, ci = 0, deleting = false;
+  </script>
+  <script>
+    const roles = [
+      "CSE Student",
+      "Python Developer",
+      "AI Enthusiast",
+      "Web Developer",
+    ];
+    let ri = 0,
+      ci = 0,
+      deleting = false;
     function type() {
-        const current = roles[ri];
-        const el = document.getElementById("typewriter");
-        if (!deleting) {
-            el.textContent = current.slice(0, ++ci);
-            if (ci === current.length) { deleting = true; return setTimeout(type, 1800); }
-        } else {
-            el.textContent = current.slice(0, --ci);
-            if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+      const current = roles[ri];
+      const el = document.getElementById("typewriter");
+      if (!deleting) {
+        el.textContent = current.slice(0, ++ci);
+        if (ci === current.length) {
+          deleting = true;
+          return setTimeout(type, 1800);
         }
-        setTimeout(type, deleting ? 60 : 100);
+      } else {
+        el.textContent = current.slice(0, --ci);
+        if (ci === 0) {
+          deleting = false;
+          ri = (ri + 1) % roles.length;
+        }
+      }
+      setTimeout(type, deleting ? 60 : 100);
     }
     type();
-</script>
-<script>
-    const skillCards = document.querySelectorAll('.skill-card');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('animated');
+  </script>
+  <script>
+    const skillCards = document.querySelectorAll(".skill-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("animated");
         });
-    }, { threshold: 0.3 });
-    skillCards.forEach(c => observer.observe(c));
-</script>
-<script>
+      },
+      { threshold: 0.3 },
+    );
+    skillCards.forEach((c) => observer.observe(c));
+  </script>
+  <script>
     function handleForm(e) {
-        e.preventDefault();
-        const note = document.getElementById('formNote');
-        note.textContent = "✓ Message sent! I'll get back to you soon.";
-        note.style.color = "#4ade80";
-        e.target.reset();
-        setTimeout(() => note.textContent = '', 4000);
+      e.preventDefault();
+      const note = document.getElementById("formNote");
+      note.textContent = "✓ Message sent! I'll get back to you soon.";
+      note.style.color = "#4ade80";
+      e.target.reset();
+      setTimeout(() => (note.textContent = ""), 4000);
     }
-</script>
-<body>
+  </script>
+  <body>
     <div class="bg"></div>
     <div class="particles"></div>
     <!-- Header/Navigation -->
     <header>
-        <nav>
-            <div class="logo">My Portfolio</div>
-            <ul id="navbar">
-                <li><a href="#" onclick="showSection('hero')">Home</a></li>
-                <li><a href="#" onclick="showSection('about')">About</a></li>
-                <li><a href="#" onclick="showSection('skills')">Skills</a></li>
-                <li><a href="#" onclick="showSection('projects')">Projects</a></li>
-                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="logo">My Portfolio</div>
+        <ul id="navbar">
+          <li><a href="#" onclick="showSection('hero')">Home</a></li>
+          <li><a href="#" onclick="showSection('about')">About</a></li>
+          <li><a href="#" onclick="showSection('skills')">Skills</a></li>
+          <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+          <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" style="padding-top: 30px;">
-        <div class="hero-content">
+    <section id="hero" style="padding-top: 30px">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Open to Opportunities
+          </div>
+          <h1>Hari Prakash M</h1>
 
-            <div class="hero-text">
-                <div class="badge">
-                    <span class="badge-dot"></span>
-                    Open to Opportunities
-                </div>
-                <h1>Hari Prakash M</h1>
+          <h2 class="typewriter-wrap">
+            <span id="typewriter"></span><span class="cursor">|</span>
+          </h2>
 
-                <h2 class="typewriter-wrap">
-                    <span id="typewriter"></span><span class="cursor">|</span>
-                </h2>
-
-                <p>
-                    Passionate Python developer focused on AI,
-                    Machine Learning and modern web experiences.
-                </p>
-                <div class="tech-strip">
-                    <img src="images/python.gif" title="Python">
-                    <img src="images/html.png" title="HTML">
-                    <img src="images/css.png" title="CSS">
-                    <img src="images/javascript.gif" title="JavaScript">
-                </div>
-                <div class="stats-row">
-                    <div class="stat"><span>4</span> Projects</div>
-                    <div class="stat-divider"></div>
-                    <div class="stat"><span>5</span> Skills</div>
-                    <div class="stat-divider"></div>
-                    <div class="stat"><span>1+</span> Years Coding</div>
-                </div>
-                <div class="cta-group">
-                    <a href="#" onclick="showSection('projects')" class="cta-primary">View My Work</a>
-                    <a href="resume.pdf" download class="cta-secondary">Download Resume ↓</a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/AltisHari18" target="_blank" class="social-icon" title="GitHub">
-                        <img src="images/git.gif">
-                    </a>
-                    <a href="https://www.linkedin.com/in/hari-prakash-b22ab5370" target="_blank" class="social-icon"
-                        title="LinkedIn">
-                        <img src="images/linkedin.gif">
-                    </a>
-                    <a href="mailto:altisgaming39@gmail.com" class="social-icon" title="Email">
-                        <img src="images/email.gif">
-                    </a>
-                </div>
-            </div>
-            <div class="flip-card">
-
-                <div class="flip-card-inner">
-
-                    <!-- FRONT -->
-                    <div class="flip-card-front">
-
-                        <img src="images/profile.png" class="profile-img">
-
-                    </div>
-
-                    <!-- BACK -->
-                    <div class="flip-card-back">
-
-                        <h2 style="font-size: small;">About Me</h2>
-
-                        <p style="font-size: small;">
-                            Building AI & Web Experiences.
-                        </p>
-
-                        <button onclick="showSection('about')">
-                            Discover My Journey →
-                        </button>
-
-                    </div>
-
-                </div>
-            </div>
+          <p>
+            Passionate Python developer focused on AI, Machine Learning and
+            modern web experiences.
+          </p>
+          <div class="tech-strip">
+            <img src="images/python.gif" title="Python" />
+            <img src="images/html.png" title="HTML" />
+            <img src="images/css.png" title="CSS" />
+            <img src="images/javascript.gif" title="JavaScript" />
+          </div>
+          <div class="stats-row">
+            <div class="stat"><span>4</span> Projects</div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span>5</span> Skills</div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span>1+</span> Years Coding</div>
+          </div>
+          <div class="cta-group">
+            <a href="#" onclick="showSection('projects')" class="cta-primary"
+              >View My Work</a
+            >
+            <a
+              href="resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-secondary"
+            >
+              View Resume ↗
+            </a>
+          </div>
+          <div class="hero-socials">
+            <a
+              href="https://github.com/AltisHari18"
+              target="_blank"
+              class="social-icon"
+              title="GitHub"
+            >
+              <img src="images/git.gif" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hari-prakash-b22ab5370"
+              target="_blank"
+              class="social-icon"
+              title="LinkedIn"
+            >
+              <img src="images/linkedin.gif" />
+            </a>
+            <a
+              href="mailto:altisgaming39@gmail.com"
+              class="social-icon"
+              title="Email"
+            >
+              <img src="images/email.gif" />
+            </a>
+          </div>
         </div>
-        <div class="scroll-indicator" onclick="showSection('about')">
-            <div class="scroll-arrow"></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front -->
+            <div class="flip-card-front">
+              <img
+                src="images/profile.png"
+                class="profile-img"
+                alt="Profile photo"
+              />
+            </div>
+
+            <!-- Back -->
+            <div class="flip-card-back">
+              <h2>About Me</h2>
+
+              <p>
+                Building AI &amp; Web Experiences. Turning ideas into
+                intelligent solutions.
+              </p>
+
+              <button onclick="showSection('about')">
+                Discover My Journey <span>→</span>
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="scroll-indicator" onclick="showSection('about')">
+        <div class="scroll-arrow"></div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <div class="container">
-
-        <section id="about">
-
-            <div class="about-container">
-
-                <div class="about-left">
-
-                    <h1>About Me</h1>
-
-                    <p>
-                        I'm Hari Prakash, a Diploma CSE student
-                        passionate about Python, AI, Machine Learning,
-                        and modern web development.
-                    </p>
-
-
-                    <p>
-                        I enjoy creating cinematic web experiences
-                        and practical AI-based projects that combine
-                        creativity with technology.
-                    </p>
-                    <a href="resume.pdf" download class="cv-btn">Download CV ↓</a>
-
-                    <div class="timeline">
-                        <div class="tl-item">
-                            <div class="tl-dot"></div>
-                            <div class="tl-content">
-                                <span class="tl-year">2023 – Present</span>
-                                <h4>Diploma in CSE</h4>
-                                <p>Vignesh Polytechnic College</p>
-                            </div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-dot"></div>
-                            <div class="tl-content">
-                                <span class="tl-year">2023</span>
-                                <h4>Started Python & AI Journey</h4>
-                                <p>Self-taught via projects & internships</p>
-                            </div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-dot"></div>
-                            <div class="tl-content">
-                                <span class="tl-year">2024</span>
-                                <h4>Built Smart EB Predictor</h4>
-                                <p>ML project deployed on HuggingFace</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="about-right">
-
-                    <div class="about-card">
-                        🌐 Creating Modern Web Experiences
-                    </div>
-
-                    <div class="about-card">
-                        🤖 Developing AI & ML Projects
-                    </div>
-
-                    <div class="about-card">
-                        🗄️ Working With SQL & Databases
-                    </div>
-
-                    <div class="about-card">
-                        🐍 Building Python Applications
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-
-            <h1 class="skills-title">Skills</h1>
-
-            <div class="skills-container">
-
-                <div class="skill-card">
-                    <img src="images/html.png">
-                    <h2>HTML</h2>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="--pct: 90%"></div>
-                    </div>
-                    <span class="skill-pct">90%</span>
-                </div>
-
-                <!-- CSS card -->
-                <div class="skill-card">
-                    <img src="images/css.png">
-                    <h2>CSS</h2>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="--pct: 85%"></div>
-                    </div>
-                    <span class="skill-pct">85%</span>
-                </div>
-
-                <!-- JS card -->
-                <div class="skill-card">
-                    <img src="images/javascript.gif">
-                    <h2>JAVA SCRIPT</h2>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="--pct: 70%"></div>
-                    </div>
-                    <span class="skill-pct">70%</span>
-                </div>
-
-                <!-- Python card -->
-                <div class="skill-card">
-                    <img src="images/python.gif">
-                    <h2>Python</h2>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="--pct: 85%"></div>
-                    </div>
-                    <span class="skill-pct">85%</span>
-                </div>
-
-                <!-- SQL card -->
-                <div class="skill-card">
-                    <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg">
-                    <h2>SQL</h2>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="--pct: 70%"></div>
-                    </div>
-                    <span class="skill-pct">70%</span>
-                </div>
-
-
-            </div>
-
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-
-            <h1 class="projects-title">Projects</h1>
-
-            <div class="projects-container">
-
-                <!-- PROJECT 1 -->
-
-                <div class="project-card">
-                    <div class="project-card featured"></div>
-
-                    <img src="images/eb.png" class="project-img">
-
-                    <div class="project-content">
-                        <span class="project-status live">⬤ Live</span>
-
-
-                        <h2>Smart EB Predictor</h2>
-
-                        <p>
-                            AI-powered electricity bill prediction
-                            system using Machine Learning.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>Python</span>
-                            <span>ML</span>
-                            <span>Streamlit</span>
-                            <span>Pandas</span>
-
-                        </div>
-
-                        <a href="https://huggingface.co/spaces/altis123/smart-electricity-bill-predictor"
-                            class="project-btn">
-                            LIVE Project
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- PROJECT 2 -->
-
-                <div class="project-card">
-
-                    <img src="images/jsOE.png" class="project-img">
-
-                    <div class="project-content">
-                        <span class="project-status live">⬤ Live</span>
-
-                        <h2>Online Examination System</h2>
-
-                        <p>
-                            Interactive web-based examination
-                            platform built using JavaScript.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-
-                        </div>
-
-                        <a href="https://altishari18.github.io/UsingJS_online-examination-system_new/"
-                            class="project-btn">
-                            LIVE Project
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- PROJECT 3 -->
-
-                <div class="project-card">
-
-                    <img src="images/php.png" class="project-img">
-
-                    <div class="project-content">
-
-                        <span class="project-status github">⬤ GitHub</span>
-
-                        <h2>PHP Examination System</h2>
-
-                        <p>
-                            Web-based online examination management
-                            system using PHP & MySQL.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-
-                        </div>
-
-                        <a href="https://github.com/AltisHari18/UsingPHP_online-examination-system" class="project-btn">
-                            View Project in Github
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- PROJECT 4 -->
-
-                <div class="project-card">
-
-                    <img src="images/file.png" class="project-img">
-
-                    <div class="project-content">
-
-                        <span class="project-status github">⬤ GitHub</span>
-
-                        <h2>File Organizer</h2>
-
-                        <p>
-                            Smart file organization tool that
-                            automatically sorts files into folders.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>Python</span>
-
-                        </div>
-
-                        <a href="https://github.com/AltisHari18/Smart-File-Organizer" class="project-btn">
-                            View Project in Github
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Contact Section -->
-        <!-- ===== CONTACT SECTION ===== -->
-
-        <section id="contact">
-
-            <h1 class="contact-title">
-                Contact Me
-            </h1>
-
-            <p class="contact-subtitle">
-                Let’s connect and build something amazing.
-            </p>
-
-            <div class="contact-container">
-
-                <!-- GitHub -->
-
-                <a href="https://github.com/AltisHari18" target="_blank" class="contact-card">
-
-                    <img src="images/git.gif">
-
-                    <h2>GitHub</h2>
-
-                </a>
-
-
-                <!-- LinkedIn -->
-
-                <a href="https://www.linkedin.com/in/hari-prakash-b22ab5370 " target="_blank" class="contact-card">
-
-                    <img src="images/linkedin.gif">
-
-                    <h2>LinkedIn</h2>
-
-                </a>
-
-
-                <!-- Email -->
-
-                <a href="mailto:altisgaming39@gmail.com" class="contact-card">
-
-                    <img src="images/email.gif">
-
-                    <h2>Email</h2>
-
-                </a>
-
-
-                <!-- Instagram -->
-
-                <a href="https://www.instagram.com/altis_hari?igsh=MXBlNnFkZ2thMzF3bA==" target="_blank"
-                    class="contact-card">
-
-                    <img src="images/instagram.png">
-
-                    <h2>Instagram</h2>
-
-                </a>
-
-
-                <!-- WhatsApp -->
-
-                <a href="https://wa.me/917397672678" target="_blank" class="contact-card">
-
-                    <img src="images/whatsapp.png">
-
-                    <h2>WhatsApp</h2>
-
-                </a>
-
-
-                
-
-            </div>
-            <div class="contact-form-wrap">
-    <h3>Or send a message directly</h3>
-    <form class="contact-form" onsubmit="handleForm(event)">
-        <div class="form-row">
-            <input type="text"  placeholder="Your Name"    required>
-            <input type="email" placeholder="Your Email"   required>
+    ```html
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+
+    <div class="about-wrapper">
+
+        <!-- Section Heading -->
+        <div class="about-heading">
+            <span class="about-label">GET TO KNOW ME</span>
+            <h2>About Me<span class="accent-dot">.</span></h2>
+            <div class="heading-line"></div>
         </div>
-        <textarea placeholder="Your Message..." rows="4" required></textarea>
-        <button type="submit" class="form-btn">Send Message →</button>
-        <p class="form-note" id="formNote"></p>
-    </form>
-</div>
 
-        </section>
+        <!-- About Content -->
+        <div class="about-grid">
+
+            <!-- LEFT: INTRODUCTION & TIMELINE -->
+            <div class="about-main">
+
+                <h3 class="about-intro-title">
+                    Building practical solutions with code.
+                </h3>
+
+                <p class="about-description">
+                    I'm Hari Prakash, a Diploma Computer Science and
+                    Engineering student passionate about Python development,
+                    Artificial Intelligence, Machine Learning, and modern
+                    web technologies.
+                </p>
+
+                <p class="about-description">
+                    I enjoy turning ideas into practical applications,
+                    exploring new technologies, and building projects
+                    that solve real-world problems. Through personal
+                    projects, I'm continuously improving my programming
+                    skills and learning software development.
+                </p>
+
+                <a href="resume.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="about-resume-btn">
+                    View Resume <span>↗</span>
+                </a>
+
+                <!-- Education & Project Experience -->
+                <div class="about-timeline">
+
+                    <h3 class="timeline-heading">
+                        Education &amp; Project Experience
+                    </h3>
+
+                    <!-- Education -->
+                    <div class="timeline-item">
+                        <span class="timeline-marker"></span>
+
+                        <div class="timeline-content">
+                            <span class="timeline-date">
+                                2025 — 2027
+                            </span>
+
+                            <h4>
+                                Diploma in Computer Science
+                                &amp; Engineering
+                            </h4>
+
+                            <p class="timeline-place">
+                                Vignesh Polytechnic College
+                            </p>
+
+                            <p class="timeline-description">
+                                Currently pursuing my diploma and
+                                strengthening my foundation in
+                                programming and software development.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="timeline-item">
+                        <span class="timeline-marker"></span>
+
+                        <div class="timeline-content">
+                            <span class="timeline-date">
+                                2025 — 2026
+                            </span>
+
+                            <h4>Web Development Projects</h4>
+
+                            <p class="timeline-description">
+                                Developed personal projects including
+                                an online examination system, an
+                                e-commerce application, a blog platform,
+                                and a task manager.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Python & AI -->
+                    <div class="timeline-item">
+                        <span class="timeline-marker"></span>
+
+                        <div class="timeline-content">
+                            <span class="timeline-date">
+                                2025 — 2026
+                            </span>
+
+                            <h4>Python &amp; AI Projects</h4>
+
+                            <p class="timeline-description">
+                                Worked on a Smart Electricity Bill
+                                Predictor and a Smart File Organizer,
+                                exploring Python, automation, and
+                                machine learning.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT: EXPERTISE -->
+            <aside class="about-sidebar">
+
+                <div class="about-sidebar-heading">
+                    
+                    <div>
+                        <h3>Areas of Focus</h3>
+                        <p>Technologies I'm exploring and building with.</p>
+                    </div>
+                </div>
+
+                <div class="expertise-list">
+
+                    <div class="expertise-item">
+                        <span class="expertise-number">01</span>
+                        <div>
+                            <h4>Python Development</h4>
+                            <p>Automation &amp; applications</p>
+                        </div>
+                        <span class="expertise-arrow">↗</span>
+                    </div>
+
+                    <div class="expertise-item">
+                        <span class="expertise-number">02</span>
+                        <div>
+                            <h4>AI &amp; Machine Learning</h4>
+                            <p>Intelligent applications</p>
+                        </div>
+                        <span class="expertise-arrow">↗</span>
+                    </div>
+
+                    <div class="expertise-item">
+                        <span class="expertise-number">03</span>
+                        <div>
+                            <h4>Web Development</h4>
+                            <p>Frontend &amp; full-stack projects</p>
+                        </div>
+                        <span class="expertise-arrow">↗</span>
+                    </div>
+
+                    <div class="expertise-item">
+                        <span class="expertise-number">04</span>
+                        <div>
+                            <h4>SQL &amp; Databases</h4>
+                            <p>Data storage &amp; management</p>
+                        </div>
+                        <span class="expertise-arrow">↗</span>
+                    </div>
+
+                </div>
+
+                <!-- Personal Goal -->
+                <div class="about-goal">
+                    <span class="goal-label">CURRENT GOAL</span>
+
+                    <p>
+                        Keep learning. Build meaningful software.
+                        Become a better developer.
+                    </p>
+                </div>
+
+            </aside>
+
+        </div>
+    </div>
+
+</section>
+```
+
+      <!-- Skills Section -->
+      <section id="skills">
+        <h1 class="skills-title">Skills</h1>
+
+        <div class="skills-container">
+          <div class="skill-card">
+            <img src="images/html.png" />
+            <h2>HTML</h2>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--pct: 90%"></div>
+            </div>
+            <span class="skill-pct">90%</span>
+          </div>
+
+          <!-- CSS card -->
+          <div class="skill-card">
+            <img src="images/css.png" />
+            <h2>CSS</h2>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--pct: 85%"></div>
+            </div>
+            <span class="skill-pct">85%</span>
+          </div>
+
+          <!-- JS card -->
+          <div class="skill-card">
+            <img src="images/javascript.gif" />
+            <h2>JAVA SCRIPT</h2>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--pct: 70%"></div>
+            </div>
+            <span class="skill-pct">70%</span>
+          </div>
+
+          <!-- Python card -->
+          <div class="skill-card">
+            <img src="images/python.gif" />
+            <h2>Python</h2>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--pct: 85%"></div>
+            </div>
+            <span class="skill-pct">85%</span>
+          </div>
+
+          <!-- SQL card -->
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+            />
+            <h2>SQL</h2>
+            <div class="skill-bar">
+              <div class="skill-fill" style="--pct: 70%"></div>
+            </div>
+            <span class="skill-pct">70%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects">
+        <h1 class="projects-title">Projects</h1>
+
+        <div class="projects-container">
+          <!-- PROJECT 1 -->
+
+          <div class="project-card">
+            <div class="project-card featured"></div>
+
+            <img src="images/eb.png" class="project-img" />
+
+            <div class="project-content">
+              <span class="project-status live">⬤ Live</span>
+
+              <h2>Smart EB Predictor</h2>
+
+              <p>
+                AI-powered electricity bill prediction system using Machine
+                Learning.
+              </p>
+
+              <div class="project-tags">
+                <span>Python</span>
+                <span>ML</span>
+                <span>Streamlit</span>
+                <span>Pandas</span>
+              </div>
+
+              <a
+                href="https://huggingface.co/spaces/altis123/smart-electricity-bill-predictor"
+                class="project-btn"
+              >
+                LIVE Project
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 2 -->
+
+          <div class="project-card">
+            <img src="images/jsOE.png" class="project-img" />
+
+            <div class="project-content">
+              <span class="project-status live">⬤ Live</span>
+
+              <h2>Online Examination System</h2>
+
+              <p>
+                Interactive web-based examination platform built using
+                JavaScript.
+              </p>
+
+              <div class="project-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+
+              <a
+                href="https://altishari18.github.io/UsingJS_online-examination-system_new/"
+                class="project-btn"
+              >
+                LIVE Project
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 3 -->
+
+          <div class="project-card">
+            <img src="images/php.png" class="project-img" />
+
+            <div class="project-content">
+              <span class="project-status github">⬤ GitHub</span>
+
+              <h2>PHP Examination System</h2>
+
+              <p>
+                Web-based online examination management system using PHP &
+                MySQL.
+              </p>
+
+              <div class="project-tags">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+              </div>
+
+              <a
+                href="https://github.com/AltisHari18/UsingPHP_online-examination-system"
+                class="project-btn"
+              >
+                View Project in Github
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 4 -->
+
+          <div class="project-card">
+            <img src="images/file.png" class="project-img" />
+
+            <div class="project-content">
+              <span class="project-status github">⬤ GitHub</span>
+
+              <h2>File Organizer</h2>
+
+              <p>
+                Smart file organization tool that automatically sorts files into
+                folders.
+              </p>
+
+              <div class="project-tags">
+                <span>Python</span>
+              </div>
+
+              <a
+                href="https://github.com/AltisHari18/Smart-File-Organizer"
+                class="project-btn"
+              >
+                View Project in Github
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <!-- ===== CONTACT SECTION ===== -->
+
+      <section id="contact">
+        <h1 class="contact-title">Contact Me</h1>
+
+        <p class="contact-subtitle">
+          Let’s connect and build something amazing.
+        </p>
+
+        <div class="contact-container">
+          <!-- GitHub -->
+
+          <a
+            href="https://github.com/AltisHari18"
+            target="_blank"
+            class="contact-card"
+          >
+            <img src="images/git.gif" />
+
+            <h2>GitHub</h2>
+          </a>
+
+          <!-- LinkedIn -->
+
+          <a
+            href="https://www.linkedin.com/in/hari-prakash-b22ab5370 "
+            target="_blank"
+            class="contact-card"
+          >
+            <img src="images/linkedin.gif" />
+
+            <h2>LinkedIn</h2>
+          </a>
+
+          <!-- Email -->
+
+          <a href="mailto:altisgaming39@gmail.com" class="contact-card">
+            <img src="images/email.gif" />
+
+            <h2>Email</h2>
+          </a>
+
+          <!-- Instagram -->
+
+          <a
+            href="https://www.instagram.com/altis_hari?igsh=MXBlNnFkZ2thMzF3bA=="
+            target="_blank"
+            class="contact-card"
+          >
+            <img src="images/instagram.png" />
+
+            <h2>Instagram</h2>
+          </a>
+
+          <!-- WhatsApp -->
+
+          <a
+            href="https://wa.me/917397672678"
+            target="_blank"
+            class="contact-card"
+          >
+            <img src="images/whatsapp.png" />
+
+            <h2>WhatsApp</h2>
+          </a>
+        </div>
+        <div class="contact-form-wrap">
+          <h3>Or send a message directly <p id="temp">[ Temporarily Unavailable ]</p></h3>
+          <form class="contact-form" onsubmit="handleForm(event)">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+            </div>
+            <textarea
+              placeholder="Your Message..."
+              rows="4"
+              required
+            ></textarea>
+            <button type="submit" class="form-btn">Send Message →</button>
+            <p class="form-note" id="formNote"></p>
+          </form>
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
     <!-- <footer>
         <p>&copy; 2026 My Portfolio. All rights reserved.</p>
     </footer> -->
-</body>
-
+  </body>
 </html>
